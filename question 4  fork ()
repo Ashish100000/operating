@@ -1,0 +1,76 @@
+
+
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+
+void sameProgSameCode() {
+    printf("Same program, same code\n");
+}
+
+void sameProgDiffCode() {
+    printf("Same program, different code\n");
+}
+
+int main() {
+    pid_t pid;
+
+    // i. Same program, same code
+    pid = fork();
+    if (pid == 0) {
+        // Child process
+        sameProgSameCode();
+        exit(0);
+    } else if (pid > 0) {
+        // Parent process
+        wait(NULL);
+    } else {
+        perror("Error in fork()");
+        exit(EXIT_FAILURE);
+    }
+
+    // ii. Same program, different code
+    pid = fork();
+    if (pid == 0) {
+        // Child process
+        sameProgDiffCode();
+        exit(0);
+    } else if (pid > 0) {
+        // Parent process
+        wait(NULL);
+    } else {
+        perror("Error in fork()");
+        exit(EXIT_FAILURE);
+    }
+
+    // iii. Before terminating, the parent waits for the child to finish its task
+    pid = fork();
+    if (pid == 0) {
+        // Child process
+        printf("Child process is working\n");
+        sleep(2); // Simulating some work
+        printf("Child process finished\n");
+        exit(0);
+    } else if (pid > 0) {
+        // Parent process
+        wait(NULL);
+        printf("Parent process: Child has finished its task.\n");
+    } else {
+        perror("Error in fork()");
+        exit(EXIT_FAILURE);
+    }
+
+    return 0;
+}
+
+
+
+
+
+output:--
+Same program, same code
+Same program, different code
+Child process is working
+Child process finished
+Parent process: Child has finished its task.
