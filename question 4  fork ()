@@ -69,8 +69,13 @@ int main() {
 
 
 output:--
-Same program, same code
-Same program, different code
-Child process is working
-Child process finished
-Parent process: Child has finished its task.
+Parent process: Child has finished its task.=== MENU =
+(1) same program, same code
+(2) same program, different code
+(3) the parent waits for the child
+(0) exit
+Enter Choice: 3
+Shell PID: 2424
+PARENT: Child Exited
+CHILD: Parent Process ID: 2453
+CHILD: Process ID: 2469
