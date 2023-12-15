@@ -35,7 +35,7 @@ int main() {
     avt = (float)tt / n;
 
     printf("\nWaiting & Turnaround time");
-    printf("\n***********************");
+    printf("\n*********");
 
     for (i = 1; i <= n; i++) {
         printf("\nProcess %d - Waiting: %d, Turnaround: %d", i, w[i], turnaround[i]);
@@ -49,29 +49,17 @@ int main() {
 
 
 
+output:
 
-output :- 
+Enter the number of Processes: 3
+Enter the Burst time of 1th Process: 5
+Enter the Burst time of 2th Process: 4
+Enter the Burst time of 3th Process: 6
 
-Enter the number of processes: 3
-
-Enter Burst Time and Priority:
-
-Process[1]
-Burst Time: 2
-Priority: 5
-
-Process[2]
-Burst Time: 4
-Priority: 8
-
-Process[3]
-Burst Time: 10
-Priority: 4
-
-Process Burst Time      Priority        Waiting Time    TurnAroundTime
-
-p[3]             10              4                       71
-p[1]             4               5                       0
-p[2]             5               8                       0
-Average Waiting Time: 0.000000
-Average Turn Around Time: 30.000000
+Waiting & Turnaround time
+*********
+Process 1 - Waiting: 0, Turnaround: 5
+Process 2 - Waiting: 5, Turnaround: 9
+Process 3 - Waiting: 9, Turnaround: 15
+Average waiting time 4.666667
+Average turnaround time 9.666667
